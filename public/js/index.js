@@ -9,7 +9,7 @@ function createMessage(message) {
     let from = document.createElement("span");
     from.innerHTML = `<strong>${message.from}: </strong>`;
     let targetText = document.createElement("span");
-    targetText.innerText = `message.text`;
+    targetText.innerText = `${message.text}`;
     li.appendChild(from);
     li.appendChild(targetText);
     messages.appendChild(li);
