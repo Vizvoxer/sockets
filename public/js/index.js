@@ -6,7 +6,12 @@ let nickname = document.querySelector(".nickname");
 const submit = document.querySelector(".send");
 function createMessage(message) {
     let li = document.createElement("li");
-    li.innerText = `from: ${message.from}, message: ${message.text}`;
+    let from = document.createElement("span");
+    from.innerHTML = `<strong>${message.from}: </strong>`;
+    let targetText = document.createElement("span");
+    targetText.innerText = `message.text`;
+    li.appendChild(from);
+    li.appendChild(targetText);
     messages.appendChild(li);
 }
 
