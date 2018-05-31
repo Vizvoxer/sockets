@@ -1,15 +1,28 @@
 const socket = io();
+let messages = document.querySelector(".messages");
+let input = document.querySelector(".message");
+let nickname = document.querySelector(".nickname");
 
+const submit = document.querySelector(".send");
+function createMessage(message) {
+    let li = document.createElement("li");
+    li.innerText = `from: ${message.from}, message: ${message.text}`;
+    messages.appendChild(li);
+}
+
+submit.addEventListener("click", () => {
+    let value = input.value;
+    socket.emit("createMessage", {
+        from: nickname.value.length? nickname.value : "anonymous",
+        text: value});
+    input.value = "";
+});
 socket.on("connect", () => {
     console.log("connected to server");
-    socket.emit("createMessage", {
-        from: "jan@example.com",
-        text: "Hi, it is endrew"
-    })
 });
 
 socket.on("newMessage", (message) => {
-    console.log(message);
+    createMessage(message);
 })
 
 socket.on("disconnect", () => {
