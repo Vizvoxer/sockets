@@ -8,11 +8,12 @@ socket.on("connect", () => {
     })
 });
 
+socket.on("newMessage", (message) => {
+    console.log(message);
+})
+
 socket.on("disconnect", () => {
     console.log("disconnected from server");
 });
 
-socket.on("newMessage", (email) => {
-    console.log("new message", email);
-});
 
