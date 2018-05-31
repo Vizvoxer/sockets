@@ -34,4 +34,22 @@ socket.on("disconnect", () => {
     console.log("disconnected from server");
 });
 
+socket.on("welcome", () => {
+    let div = document.querySelector(".welcome");
+    div.classList.add("visible");
+    div.innerText = "Welcome to chat. Please, introduce yourself";
+    setTimeout(() => {
+        div.classList.remove("visible");
+    }, 4000)
+});
+
+socket.on("userJoin", () => {
+    let div = document.querySelector(".welcome");
+    div.classList.add("visible");
+    div.innerText = "Someone joined our room";
+    setTimeout(() => {
+        div.classList.remove("visible");
+    }, 4000)
+});
+
 

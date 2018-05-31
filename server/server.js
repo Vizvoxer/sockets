@@ -12,7 +12,8 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 io.on("connection", (socket) => {
-    console.log("new user connected");
+    socket.broadcast.emit("userJoin");
+    socket.emit("welcome");
 
     socket.on("createMessage", (message) => {
         io.emit("newMessage", {
